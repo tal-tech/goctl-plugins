@@ -1,0 +1,88 @@
+plugins {
+    id 'antlr'
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.21'
+}
+
+group 'cn.xiaoheiban'
+version '0.6.8'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://dl.bintray.com/antlr/maven/"
+    }
+}
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+dependencies {
+    antlr("org.antlr:antlr4:$antlr4Version") { // use ANTLR version 4
+        exclude group: 'com.ibm.icu', module: 'icu4j'
+    }
+    compile('org.antlr:antlr4-jetbrains-adapter:3.0.snapshot.efd2349681fbe1719e7115f0a4e8b82ecafe21b9') {
+        exclude group: 'com.jetbrains'
+        exclude group: 'org.slf4j'
+    }
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version = '2020.2.1'
+    pluginName = 'Goctl'
+    downloadSources true
+    updateSinceUntilBuild false
+}
+
+patchPluginXml {
+    sinceBuild '193.0'
+    changeNotes """
+    <h1># 2020-10-18(v0.6.8)</h1>
+    <ul>
+        <li>Support api import </li>
+        <li>Support @handler grammar</li>
+        <li>Modify handler template</li>
+    </ul>
+    <h1># 2020-10-09(v0.6.7)</h1>
+    <ul>
+        <li>Support inline type </li>
+        <li>Fix grammar</li>
+        <li>Optimize resource(cpu&memory) consumption</li>
+    </ul>
+    <h1># 2020-09-25(v0.6.2)</h1>
+    <ul>
+        <li>Support live template </li>
+        <li>Support completion contributor</li>
+        <li>Optimize grammar</li>
+    </ul>
+    <h1># 2020-09-20(v0.5)</h1>
+    <ul>
+        <li>Find reference </li>
+        <li>Replace bnf to antlr4</li>
+        <li>Resolve context definination</li>
+        <li>Keyword completion contributor</li>
+    </ul>
+    
+    <h1># 2020-09-13(v0.3)</h1>
+    <ul>
+        <li>Add context menu</li>
+        <li>Optimize highlighting of api</li>
+    </ul>
+    
+    <h1># 2020-09-04(v0.2-bata)</h1>
+    <ul>
+        <li>Highlighting of api</li>
+        <li>Grammar and lexer check</li>
+        <li>Duplicate route check</li>
+    </ul>
+    """
+}
+
+publishPlugin {
+    token = System.getenv("ORG_GRADLE_PROJECT_intellijPublishToken")
+    channels 'beta'
+}

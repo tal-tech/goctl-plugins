@@ -1,0 +1,7 @@
+info(
+    title: "fill title"
+    desc: "fill desc"
+    author: "fill author"
+    email: "fill email"
+    version: "fill version"
+)
