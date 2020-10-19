@@ -1,6 +1,6 @@
 # goctl-plugins
 
-[English](readme_en.md) | 简体中文
+[English](readme-en.md) | 简体中文
 
 goctl 插件/扩展集，例如 vscode 或 goland 等
 
