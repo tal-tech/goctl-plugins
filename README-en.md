@@ -28,7 +28,7 @@ For more information please check [here](goland/README.md).
 
 ### Install this extension
 
-The plug-in can be installed on the 1.46.0+ version of Visual Studio Code. First of all, please make sure that your Visual Studio Code version meets the requirements. If it is not already installed, please install and open Visual Studio Code. Navigate to the "Extensions" pane (Ctrl + Shift + X). Search for "goctl" and install this extension (publisher ID is "xiaoxin-technology.goctl").
+The plug-in can be installed on the 1.46.0+ version of Visual Studio Code. First of all, please make sure that your Visual Studio Code version meets the requirements. If it is not already installed, please install and open Visual Studio Code. Navigate to the "Extensions" pane, Search for `goctl` and install this extension (publisher ID is "xiaoxin-technology.goctl").
 
 > For the extension of Visual Studio Code, please refer to [here](https://code.visualstudio.com/docs/editor/extension-gallery).
 
