@@ -58,7 +58,7 @@ public class ApiFieldNameMacro extends Macro {
             if (node == null) {
                 return Collections.emptySet();
             }
-            if (node.getElementType().equals(ApiParserDefinition.rule(ApiParser.RULE_typeFiled))) {
+            if (node.getElementType().equals(ApiParserDefinition.rule(ApiParser.RULE_normalField))) {
                 ASTNode fieldNameNode = node.getFirstChildNode();
                 if (fieldNameNode == null) {
                     return Collections.emptySet();
@@ -73,9 +73,8 @@ public class ApiFieldNameMacro extends Macro {
                 Set<String> set = new HashSet<String>();
                 set.add(node.getText());
                 return set;
-            } else {
-                node = node.getTreeParent();
             }
+            node = node.getTreeParent();
         }
     }
 }
