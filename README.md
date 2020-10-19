@@ -2,7 +2,7 @@
 
 [English](README-en.md) | 简体中文
 
-goctl 插件/扩展集，例如 vscode 或 goland 等
+goctl 插件/扩展集，例如 vscode 或 goland 等。
 
 ## 适用于 IntelliJ 平台的 goctl 插件
 
