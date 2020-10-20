@@ -22,12 +22,12 @@ import java.util.Set;
 public class ApiFieldNameMacro extends Macro {
     @Override
     public String getName() {
-        return "fieldName";
+        return "apiFieldName";
     }
 
     @Override
     public String getPresentableName() {
-        return "fieldName()";
+        return "apiFieldName()";
     }
 
     @Nullable
