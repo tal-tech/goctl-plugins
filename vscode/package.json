@@ -2,7 +2,7 @@
     "name": "goctl",
     "displayName": "goctl",
     "description": "goctl visual studio code extension",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "publisher": "xiaoxin-technology",
     "engines": {
         "vscode": "^1.46.0"
