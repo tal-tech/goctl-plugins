@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'cn.xiaoheiban'
-version '0.6.8'
+version '0.6.9'
 
 repositories {
     mavenCentral()
@@ -41,6 +41,11 @@ intellij {
 patchPluginXml {
     sinceBuild '193.0'
     changeNotes """
+    <h1># 2020-10-20(v0.6.9)</h1>
+    <ul>
+        <li>Fix bug: typing tag causes idea to freeze </li>
+        <li>Add middleWare keyWord</li>
+    </ul>
     <h1># 2020-10-18(v0.6.8)</h1>
     <ul>
         <li>Support api import </li>
@@ -50,7 +55,7 @@ patchPluginXml {
     <h1># 2020-10-09(v0.6.7)</h1>
     <ul>
         <li>Support inline type </li>
-        <li>Fix grammar</li>
+        <li>Optimize grammar</li>
         <li>Optimize resource(cpu&memory) consumption</li>
     </ul>
     <h1># 2020-09-25(v0.6.2)</h1>

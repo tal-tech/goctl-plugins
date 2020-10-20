@@ -2,14 +2,13 @@ package cn.xiaoheiban.psi.nodes;
 
 import cn.xiaoheiban.antlr4.ApiParser;
 import cn.xiaoheiban.parser.ApiParserDefinition;
+import cn.xiaoheiban.parser.DuplicateManager;
 import cn.xiaoheiban.parser.StructManager;
 import cn.xiaoheiban.psi.ApiFile;
 import com.intellij.lang.ASTNode;
-import com.intellij.lang.annotation.AnnotationHolder;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IElementType;
 import org.antlr.jetbrains.adapter.lexer.RuleIElementType;
-import org.antlr.jetbrains.adapter.psi.AntlrPsiNode;
 import org.apache.commons.collections.map.HashedMap;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,7 +21,7 @@ import java.util.Set;
 //    case 2: type User struct {
 //        ...
 //    }
-public class StructNameNode extends AntlrPsiNode {
+public class StructNameNode extends IPsiNode {
 
     private boolean isTypeLit;
 
@@ -34,10 +33,6 @@ public class StructNameNode extends AntlrPsiNode {
         StructManager.getInstance().add(this);
     }
 
-    @Override
-    public String getName() {
-        return getText();
-    }
 
     @NotNull
     public Map<String, Set<FieldNode>> getFields() {

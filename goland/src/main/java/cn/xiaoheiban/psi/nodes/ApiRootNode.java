@@ -7,15 +7,17 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNamedElement;
 import org.antlr.jetbrains.adapter.SymtabUtils;
-import org.antlr.jetbrains.adapter.psi.AntlrPsiNode;
 import org.antlr.jetbrains.adapter.psi.ScopeNode;
 import org.apache.commons.collections.map.HashedMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class ApiRootNode extends AntlrPsiNode implements ScopeNode {
+public class ApiRootNode extends IPsiNode implements ScopeNode {
 
     public ApiRootNode(@NotNull ASTNode node) {
         super(node);

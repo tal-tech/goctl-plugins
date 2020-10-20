@@ -55,7 +55,7 @@ serviceRoute:httpRoute LPAREN referenceId? RPAREN RETURNS (LPAREN referenceId? R
 httpRoute:HTTPMETHOD PATH;
 identPair:KEY COLON identValue;
 handlerPair:KEY COLON handlerValue;
-identValue:IDENT;
+identValue:(IDENT ','?)+;
 handlerValue:IDENT;
 importValue:VALUE;
 pair:(KEY COLON VALUE?)*;

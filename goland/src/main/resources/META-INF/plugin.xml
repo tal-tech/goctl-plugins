@@ -9,6 +9,7 @@
      Support for Api programming language of xiaoheiban.
      <h1>Features</h1>
      <ul>
+        <li>Api File Import</li>
         <li>Find reference</li>
         <li>Add context menu</li>
         <li>Highlighting of api</li>

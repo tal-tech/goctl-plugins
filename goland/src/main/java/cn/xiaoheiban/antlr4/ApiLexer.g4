@@ -23,6 +23,7 @@ KEY:
     |JWT
     |SUMMARY
     |HANDLER
+    |MIDDLEWARE
     ;
 
 
@@ -35,6 +36,7 @@ GROUP :    'group';
 JWT    :    'jwt';
 SUMMARY:    'summary';
 HANDLER:    'handler';
+MIDDLEWARE:    'middleWare';
 
 // HTTP METHOD
 HTTPMETHOD:GET|HEAD|POST|PUT|PATCH|DELETE|CONNECT|OPTIONS|TRACE;
