@@ -4,10 +4,9 @@ import cn.xiaoheiban.antlr4.ApiParser;
 import cn.xiaoheiban.parser.ApiParserDefinition;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
-import org.antlr.jetbrains.adapter.psi.AntlrPsiNode;
 import org.jetbrains.annotations.NotNull;
 
-public class AnonymousField extends AntlrPsiNode {
+public class AnonymousField extends IPsiNode {
     public AnonymousField(@NotNull ASTNode node) {
         super(node);
     }

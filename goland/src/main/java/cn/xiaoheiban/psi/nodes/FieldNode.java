@@ -5,14 +5,9 @@ import cn.xiaoheiban.parser.ApiParserDefinition;
 import cn.xiaoheiban.psi.ApiFile;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
-import org.antlr.jetbrains.adapter.psi.AntlrPsiNode;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-public class FieldNode extends AntlrPsiNode {
+public class FieldNode extends IPsiNode {
 
     public FieldNode(@NotNull ASTNode node) {
         super(node);

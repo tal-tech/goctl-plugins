@@ -1,10 +1,11 @@
 info(
-    title: "fill title"
-    desc: "fill desc"
-    author: "fill author"
-    email: "fill email"
-    version: "fill version"
+    title: "type title here"
+    desc: "type desc here"
+    author: "type author here"
+    email: "type email here"
+    version: "type version here"
 )
+
 
 type request struct{
     // TODO: add members here and delete this comment

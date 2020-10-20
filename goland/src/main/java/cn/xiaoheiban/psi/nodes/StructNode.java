@@ -2,7 +2,6 @@ package cn.xiaoheiban.psi.nodes;
 
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
-import org.antlr.jetbrains.adapter.psi.AntlrPsiNode;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -10,7 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class StructNode extends AntlrPsiNode {
+public class StructNode extends IPsiNode {
     public StructNode(@NotNull ASTNode node) {
         super(node);
     }

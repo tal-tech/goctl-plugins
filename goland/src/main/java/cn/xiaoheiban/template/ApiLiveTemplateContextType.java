@@ -79,6 +79,7 @@ abstract public class ApiLiveTemplateContextType extends TemplateContextType {
         return new ApiSyntaxHighlighter();
     }
 
+
     // struct域
     public static class Struct extends ApiLiveTemplateContextType {
         protected Struct() {
@@ -133,6 +134,9 @@ abstract public class ApiLiveTemplateContextType extends TemplateContextType {
             while (true) {
                 if (node == null) {
                     return false;
+                }
+                if (node.getElementType().equals(ApiParserDefinition.rule(ApiParser.RULE_serviceStatement))){
+                    return true;
                 }
                 if (node.getElementType().equals(ApiParserDefinition.rule(ApiParser.RULE_serviceSpec))) {
                     return true;

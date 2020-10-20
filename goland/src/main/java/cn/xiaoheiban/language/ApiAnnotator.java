@@ -6,59 +6,72 @@ import cn.xiaoheiban.parser.ImportValueManager;
 import cn.xiaoheiban.parser.RouteManager;
 import cn.xiaoheiban.parser.StructManager;
 import cn.xiaoheiban.psi.nodes.*;
-import com.intellij.lang.ASTNode;
 import com.intellij.lang.annotation.AnnotationHolder;
 import com.intellij.lang.annotation.Annotator;
 import com.intellij.psi.PsiElement;
-import org.apache.commons.collections.map.HashedMap;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 import java.util.Set;
 
 public class ApiAnnotator implements Annotator {
-    public static final Map<String, Set<PsiElement>> pathNodeMap = new HashedMap();
-    public static final Map<String, Set<PsiElement>> handlerNodeMap = new HashedMap();
-
 
     @Override
     public void annotate(@NotNull PsiElement element, @NotNull AnnotationHolder holder) {
+        if (!(element instanceof IPsiNode)) {
+            return;
+        }
+        IPsiNode psi = (IPsiNode) element;
+        String filename = psi.getFileName();
         if (element instanceof ApiRootNode) {
-            Map<String, Set<ASTNode>> duplicateStruct = StructManager.getInstance().getDuplicate();
+            Map<String, Set<IPsiNode>> duplicateStruct = StructManager.getInstance().getDuplicate();
+            Map<String, Set<IPsiNode>> duplicateRoute = RouteManager.getInstance().getDuplicate();
+            Map<String, Set<IPsiNode>> duplicateImport = ImportValueManager.getInstance().getDuplicate();
+            Map<String, Set<IPsiNode>> duplicateHandler = HandlerValueManager.getInstance().getDuplicate();
+
             duplicateStruct.forEach((s, psiElements) -> {
                 if (psiElements == null || s == null) return;
                 psiElements.forEach(el -> {
                     if (el == null) return;
-                    holder.createErrorAnnotation(el, "struct " + s + " redeclare in this api");
+                    if (!filename.equals(el.getFileName())) {
+                        return;
+                    }
+                    holder.createErrorAnnotation(el, "struct " + el.getName() + " redeclare in this api");
                 });
             });
 
-            Map<String, Set<ASTNode>> duplicateImport = ImportValueManager.getInstance().getDuplicate();
+
             duplicateImport.forEach((s, psiElements) -> {
                 if (psiElements == null || s == null) return;
                 psiElements.forEach(el -> {
                     if (el == null) return;
-                    holder.createErrorAnnotation(el, "import " + s + " redeclare in this api");
+                    if (!filename.equals(el.getFileName())) {
+                        return;
+                    }
+                    holder.createErrorAnnotation(el, "import " + el.getName() + " redeclare in this api");
                 });
             });
-
-        } else if (element instanceof ServiceRouteNode) {
-            Map<String, Set<ASTNode>> duplicateRoute = RouteManager.getInstance().getDuplicate();
-            Map<String, Set<ASTNode>> duplicateHandler = HandlerValueManager.getInstance().getDuplicate();
             duplicateRoute.forEach((s, psiElements) -> {
                 if (psiElements == null || s == null) return;
                 psiElements.forEach(el -> {
                     if (el == null) return;
-                    holder.createErrorAnnotation(el, "http route " + s + " redeclare in this api");
+                    if (!filename.equals(el.getFileName())) {
+                        return;
+                    }
+                    holder.createErrorAnnotation(el, "http route " + el.getName() + " redeclare in this api");
                 });
             });
             duplicateHandler.forEach((s, psiElements) -> {
                 if (psiElements == null || s == null) return;
                 psiElements.forEach(el -> {
                     if (el == null) return;
-                    holder.createErrorAnnotation(el, "handler " + s + " redeclare in this api");
+                    if (!filename.equals(el.getFileName())) {
+                        return;
+                    }
+                    holder.createErrorAnnotation(el, "handler " + el.getName() + " redeclare in this api");
                 });
             });
+
         } else if (element instanceof StructNode) {
             StructNode node = (StructNode) element;
             Map<String, Set<PsiElement>> duplicateField = node.getDuplicateField();
@@ -69,8 +82,14 @@ public class ApiAnnotator implements Annotator {
                     holder.createErrorAnnotation(el, "filed [" + s + "] redeclare in this struct");
                 });
             });
-        } else if (element instanceof ReferenceIdNode || element instanceof ServiceNameNode) {//RULE_referenceId
+        } else if (element instanceof ServiceNameNode) {
             holder.createInfoAnnotation(element, element.getText()).setTextAttributes(ApiSyntaxHighlighter.IDENTIFIER);
+        } else if (element instanceof ReferenceIdNode) {//RULE_referenceId
+            if (StructManager.getInstance().contains(psi)) {
+                holder.createInfoAnnotation(element, element.getText()).setTextAttributes(ApiSyntaxHighlighter.IDENTIFIER);
+                return;
+            }
+            holder.createErrorAnnotation(element, "can not resolve " + psi.getName());
         }
     }
 
