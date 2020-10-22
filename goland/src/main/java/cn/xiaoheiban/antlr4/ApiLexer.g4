@@ -36,7 +36,7 @@ GROUP :    'group';
 JWT    :    'jwt';
 SUMMARY:    'summary';
 HANDLER:    'handler';
-MIDDLEWARE:    'middleWare';
+MIDDLEWARE:    'middleware';
 
 // HTTP METHOD
 HTTPMETHOD:GET|HEAD|POST|PUT|PATCH|DELETE|CONNECT|OPTIONS|TRACE;
