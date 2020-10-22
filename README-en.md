@@ -4,6 +4,8 @@ English | [简体中文](README.md)
 
 The plugins/extensions for goctl, like vscode or goland etc.
 
+**Note:** goctl goland plugin and goctl vscode extensions depend on goctl command line tool, please [install goctl command line tool](https://github.com/tal-tech/zero-doc#6-quick-start) first.
+
 ## goctl plugin for IntelliJ Platform
 
 ### Install this plugin
@@ -18,7 +20,7 @@ The plugin can be installed on following IntelliJ-based:
 * RubyMine 2019.3+
 * CLion 2019.3+
 
-Make sure your IDE meets the above requirements. In the IntelliJ Plugin store, search for `Goctl` to install (publisher is "xiaoheiban").
+Make sure your IDE meets the above requirements and have installed the goctl command line tool. In the IntelliJ Plugin store, search for `Goctl` to install (publisher is "xiaoheiban").
 
 > For IntelliJ plug-in use, please refer to [here](https://www.jetbrains.com/idea/help/managing-enterprise-plugin-repositories.html).
 
@@ -28,7 +30,7 @@ For more information please check [here](goland/README.md).
 
 ### Install this extension
 
-The plug-in can be installed on the 1.46.0+ version of Visual Studio Code. First of all, please make sure that your Visual Studio Code version meets the requirements. If it is not already installed, please install and open Visual Studio Code. Navigate to the "Extensions" pane, Search for `goctl` and install this extension (publisher ID is "xiaoxin-technology.goctl").
+The plug-in can be installed on the 1.46.0+ version of Visual Studio Code. First of all, please make sure that your Visual Studio Code version meets the requirements and have installed the goctl command line tool. If Visual Studio Code is not already installed, please install and open Visual Studio Code. Navigate to the "Extensions" pane, Search for `goctl` and install this extension (publisher ID is "xiaoxin-technology.goctl").
 
 > For the extension of Visual Studio Code, please refer to [here](https://code.visualstudio.com/docs/editor/extension-gallery).
 
