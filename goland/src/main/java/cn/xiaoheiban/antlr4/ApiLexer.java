@@ -59,7 +59,7 @@ public class ApiLexer extends Lexer {
 			null, "'info'", "'map'", "'struct'", "'interface'", "'type'", "'@server'", 
 			"'@doc'", "'@handler'", "'service'", "'returns'", "'import'", null, "'title'", 
 			"'desc'", "'author'", "'email'", "'version'", "'group'", "'jwt'", "'summary'", 
-			"'handler'", "'middleWare'", null, "'get'", "'head'", "'post'", "'put'", 
+			"'handler'", "'middleware'", null, "'get'", "'head'", "'post'", "'put'", 
 			"'patch'", "'delete'", "'connect'", "'options'", "'trace'", null, "'bool'", 
 			"'uint8'", "'uint16'", "'uint32'", "'uint64'", "'int8'", "'int16'", "'int32'", 
 			"'int64'", "'float32'", "'float64'", "'complex64'", "'complex128'", "'string'", 
@@ -267,7 +267,7 @@ public class ApiLexer extends Lexer {
 		"\2\u0137\u0138\7j\2\2\u0138\u0139\7c\2\2\u0139\u013a\7p\2\2\u013a\u013b"+
 		"\7f\2\2\u013b\u013c\7n\2\2\u013c\u013d\7g\2\2\u013d\u013e\7t\2\2\u013e"+
 		",\3\2\2\2\u013f\u0140\7o\2\2\u0140\u0141\7k\2\2\u0141\u0142\7f\2\2\u0142"+
-		"\u0143\7f\2\2\u0143\u0144\7n\2\2\u0144\u0145\7g\2\2\u0145\u0146\7Y\2\2"+
+		"\u0143\7f\2\2\u0143\u0144\7n\2\2\u0144\u0145\7g\2\2\u0145\u0146\7y\2\2"+
 		"\u0146\u0147\7c\2\2\u0147\u0148\7t\2\2\u0148\u0149\7g\2\2\u0149.\3\2\2"+
 		"\2\u014a\u0154\5\61\31\2\u014b\u0154\5\63\32\2\u014c\u0154\5\65\33\2\u014d"+
 		"\u0154\5\67\34\2\u014e\u0154\59\35\2\u014f\u0154\5;\36\2\u0150\u0154\5"+

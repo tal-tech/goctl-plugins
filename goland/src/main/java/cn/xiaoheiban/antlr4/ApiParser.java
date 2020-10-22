@@ -61,7 +61,7 @@ public class ApiParser extends Parser {
 			null, "'info'", "'map'", "'struct'", "'interface'", "'type'", "'@server'", 
 			"'@doc'", "'@handler'", "'service'", "'returns'", "'import'", null, "'title'", 
 			"'desc'", "'author'", "'email'", "'version'", "'group'", "'jwt'", "'summary'", 
-			"'handler'", "'middleWare'", null, "'get'", "'head'", "'post'", "'put'", 
+			"'handler'", "'middleware'", null, "'get'", "'head'", "'post'", "'put'", 
 			"'patch'", "'delete'", "'connect'", "'options'", "'trace'", null, "'bool'", 
 			"'uint8'", "'uint16'", "'uint32'", "'uint64'", "'int8'", "'int16'", "'int32'", 
 			"'int64'", "'float32'", "'float64'", "'complex64'", "'complex128'", "'string'", 
