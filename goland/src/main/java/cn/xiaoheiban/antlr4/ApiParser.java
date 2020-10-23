@@ -1726,13 +1726,13 @@ public class ApiParser extends Parser {
 		public TerminalNode RPAREN(int i) {
 			return getToken(ApiParser.RPAREN, i);
 		}
-		public TerminalNode RETURNS() { return getToken(ApiParser.RETURNS, 0); }
 		public List<ReferenceIdContext> referenceId() {
 			return getRuleContexts(ReferenceIdContext.class);
 		}
 		public ReferenceIdContext referenceId(int i) {
 			return getRuleContext(ReferenceIdContext.class,i);
 		}
+		public TerminalNode RETURNS() { return getToken(ApiParser.RETURNS, 0); }
 		public TerminalNode SMICOLON() { return getToken(ApiParser.SMICOLON, 0); }
 		public ServiceRouteContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1763,13 +1763,13 @@ public class ApiParser extends Parser {
 
 			setState(270);
 			match(RPAREN);
-			setState(271);
-			match(RETURNS);
 			setState(277);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (_la==LPAREN) {
+			if (_la==RETURNS) {
 				{
+				setState(271);
+				match(RETURNS);
 				setState(272);
 				match(LPAREN);
 				setState(274);
@@ -2184,10 +2184,10 @@ public class ApiParser extends Parser {
 		"\3\2\2\2\u0103\u0104\7\b\2\2\u0104\u0105\78\2\2\u0105\u0106\5J&\2\u0106"+
 		"\u0107\79\2\2\u0107A\3\2\2\2\u0108\u0109\7\n\2\2\u0109\u010a\5N(\2\u010a"+
 		"C\3\2\2\2\u010b\u010c\5F$\2\u010c\u010e\78\2\2\u010d\u010f\5\60\31\2\u010e"+
-		"\u010d\3\2\2\2\u010e\u010f\3\2\2\2\u010f\u0110\3\2\2\2\u0110\u0111\79"+
-		"\2\2\u0111\u0117\7\f\2\2\u0112\u0114\78\2\2\u0113\u0115\5\60\31\2\u0114"+
+		"\u010d\3\2\2\2\u010e\u010f\3\2\2\2\u010f\u0110\3\2\2\2\u0110\u0117\79"+
+		"\2\2\u0111\u0112\7\f\2\2\u0112\u0114\78\2\2\u0113\u0115\5\60\31\2\u0114"+
 		"\u0113\3\2\2\2\u0114\u0115\3\2\2\2\u0115\u0116\3\2\2\2\u0116\u0118\79"+
-		"\2\2\u0117\u0112\3\2\2\2\u0117\u0118\3\2\2\2\u0118\u011a\3\2\2\2\u0119"+
+		"\2\2\u0117\u0111\3\2\2\2\u0117\u0118\3\2\2\2\u0118\u011a\3\2\2\2\u0119"+
 		"\u011b\7?\2\2\u011a\u0119\3\2\2\2\u011a\u011b\3\2\2\2\u011bE\3\2\2\2\u011c"+
 		"\u011d\7\31\2\2\u011d\u011e\7\67\2\2\u011eG\3\2\2\2\u011f\u0120\7\16\2"+
 		"\2\u0120\u0121\7D\2\2\u0121\u0122\5L\'\2\u0122I\3\2\2\2\u0123\u0124\7"+

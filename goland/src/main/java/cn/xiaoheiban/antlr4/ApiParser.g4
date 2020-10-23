@@ -51,7 +51,7 @@ serviceBody:serviceDoc? (serviceHandler|serviceHandlerNew) serviceRoute;
 serviceDoc: ATDOC LPAREN pair RPAREN;
 serviceHandler: ATSERVER LPAREN handlerPair RPAREN;
 serviceHandlerNew: ATHANDLER handlerValue;
-serviceRoute:httpRoute LPAREN referenceId? RPAREN RETURNS (LPAREN referenceId? RPAREN)? SMICOLON?;
+serviceRoute:httpRoute LPAREN referenceId? RPAREN (RETURNS LPAREN referenceId? RPAREN)? SMICOLON?;
 httpRoute:HTTPMETHOD PATH;
 identPair:KEY COLON identValue;
 handlerPair:KEY COLON handlerValue;
