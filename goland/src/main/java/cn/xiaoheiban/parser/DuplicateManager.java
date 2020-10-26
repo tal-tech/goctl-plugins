@@ -2,6 +2,7 @@ package cn.xiaoheiban.parser;
 
 import cn.xiaoheiban.psi.nodes.IPsiNode;
 import com.intellij.lang.ASTNode;
+import com.intellij.openapi.util.text.StringUtil;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -26,10 +27,12 @@ public class DuplicateManager {
 
     public boolean contains(IPsiNode node) {
         String key = node.getKey();
-        boolean contains = false;
         Set<String> set = new HashSet<>();
         duplicates.forEach((el) -> {
             if (!el.isValid() || !el.isPhysical()) {
+                return;
+            }
+            if (StringUtil.isEmptyOrSpaces(el.getKey())) {
                 return;
             }
             set.add(el.getKey());
@@ -43,6 +46,11 @@ public class DuplicateManager {
         Set<ASTNode> matchSet = new HashSet<>();
         duplicates.forEach((el) -> {
             String key = el.getKey();
+            // filename filter
+            int index = key.indexOf(":");
+            if (index <= 0) {
+                return;
+            }
             Set<IPsiNode> set = tmp.get(key);
             if (set == null) {
                 set = new HashSet<>();

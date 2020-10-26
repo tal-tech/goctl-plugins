@@ -60,10 +60,6 @@ public class ApiParserDefinition implements ParserDefinition {
     private final Map<String, Method> parserRuleMethods = createParserRuleMethods();
 
     ApiParserDefinition() {
-        HandlerValueManager.getInstance().init();
-        ImportValueManager.getInstance().init();
-        RouteManager.getInstance().init();
-        StructManager.getInstance().init();
         register(ApiParser.RULE_api, ApiRootNode::new);
         register(ApiParser.RULE_importValue, ImportValueNode::new);
         register(ApiParser.RULE_structNameId, StructNameNode::new);
