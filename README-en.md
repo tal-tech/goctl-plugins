@@ -4,7 +4,7 @@ English | [简体中文](README.md)
 
 The plugins/extensions for goctl, like vscode or goland etc.
 
-**Note:** goctl goland plugin and goctl vscode extensions depend on goctl command line tool, please [install goctl command line tool](https://github.com/tal-tech/zero-doc#6-quick-start) first.
+**Note:** goctl goland plugin and goctl vscode extensions depend on goctl command line tool, please [install goctl command line tool](https://github.com/tal-tech/go-zero#5-quick-start) first.
 
 ## goctl plugin for IntelliJ Platform
 

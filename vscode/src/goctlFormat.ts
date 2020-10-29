@@ -8,26 +8,21 @@ export class GoctlDocumentFormattingEditProvider implements vscode.DocumentForma
 		options: vscode.FormattingOptions,
 		token: vscode.CancellationToken): vscode.ProviderResult<vscode.TextEdit[]> {
 
-		let saved = document.save();
-		let self = this;
-		async function toFormat() {
-			await saved;
-			return self.runFormatter(document, token).then(
-				(edits) => edits,
-				(err) => {
-					// if (typeof err === 'string' && err.startsWith('flag provided but not defined: -srcdir')) {
-					// 	// promptForUpdatingTool(formatTool);
-					// 	return Promise.resolve([]);
-					// }
-					if (err) {
-						const errs = err.split('\n');
-						return Promise.reject(errs);
-						// return Promise.reject(err);
-					}
+		return this.runFormatter(document, token).then(
+			(edits) => edits,
+			(err) => {
+				if (err) {
+					let errs = err.split('\n');
+					errs.forEach((element: string) => {
+						if (element.trim().length === 0) {
+							return;
+						}
+						vscode.window.showErrorMessage(element);
+					});
+					return Promise.reject();
 				}
-			);
-		}
-		return toFormat();
+			}
+		);
 	}
 
 	private runFormatter(
@@ -37,9 +32,7 @@ export class GoctlDocumentFormattingEditProvider implements vscode.DocumentForma
 		token: vscode.CancellationToken
 	): Thenable<vscode.TextEdit[]> {
 
-		const apiFileRealyPath = document.uri.fsPath;
-
-		const formatFlags = ['api', 'format', '-p', '-iu', '--dir', apiFileRealyPath];
+		const formatFlags = ['api', 'format', '-iu', '--stdin'];
 		return new Promise<vscode.TextEdit[]>((resolve, reject) => {
 			let stdout = '';
 			let stderr = '';
@@ -58,9 +51,8 @@ export class GoctlDocumentFormattingEditProvider implements vscode.DocumentForma
 				}
 			});
 			p.on('close', (code) => {
-
 				if (code !== 0) {
-					return reject(stdout);
+					return reject(stderr);
 				}
 
 				// Return the complete file content in the edit.
