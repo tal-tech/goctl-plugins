@@ -2,8 +2,9 @@
     "name": "goctl",
     "displayName": "goctl",
     "description": "goctl visual studio code extension",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "publisher": "xiaoxin-technology",
+    "icon": "images/go-zero-logo.png",
     "engines": {
         "vscode": "^1.46.0"
     },

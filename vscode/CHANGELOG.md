@@ -1,7 +1,8 @@
 ## v0.1.5
 
-### Optimizae
+### Optimize
 
+- Add go-zero logo.
 - Optimize the formatting logic, when formatting the file, there is no need to save the file to disk.
 
 ### Fixed
