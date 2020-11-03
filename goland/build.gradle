@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'cn.xiaoheiban'
-version '0.7.3'
+version '0.7.4'
 
 repositories {
     mavenCentral()
@@ -41,8 +41,9 @@ intellij {
 patchPluginXml {
     sinceBuild '193.0'
     changeNotes """
-    <h1># 2020-10-20(v0.7.3)</h1>
+    <h1># 2020-10-20(v0.7.4)</h1>
     <ul>
+        <li>optimize duplicate check </li>
         <li>Add logo </li>
         <li>Optimize duplicate element</li>
     </ul>

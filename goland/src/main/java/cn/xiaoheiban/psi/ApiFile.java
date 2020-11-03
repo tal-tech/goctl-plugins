@@ -6,17 +6,20 @@ import cn.xiaoheiban.language.ApiLanguage;
 import cn.xiaoheiban.psi.nodes.ApiRootNode;
 import com.intellij.extapi.psi.PsiFileBase;
 import com.intellij.lang.ASTNode;
-import com.intellij.openapi.fileChooser.FileElement;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.psi.FileViewProvider;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IElementType;
 import org.antlr.jetbrains.adapter.lexer.RuleIElementType;
 import org.antlr.jetbrains.adapter.psi.ScopeNode;
+import org.apache.commons.collections.map.HashedMap;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.BiConsumer;
 
 public class ApiFile extends PsiFileBase {
 
@@ -32,6 +35,43 @@ public class ApiFile extends PsiFileBase {
     @Override
     public String toString() {
         return "Api File";
+    }
+
+    public static Map<IElementType, List<ASTNode>> findChildren(PsiElement element, Set<IElementType> elementType) {
+        if (element == null) {
+            return null;
+        }
+        PsiElement[] children = element.getChildren();
+        if (children == null) {
+            return null;
+        }
+        Map<IElementType, List<ASTNode>> ret = new HashedMap();
+        for (PsiElement el : children) {
+            ASTNode node = el.getNode();
+            if (node == null) {
+                continue;
+            }
+            IElementType et = node.getElementType();
+            List<ASTNode> list = ret.get(et);
+            if (list == null) {
+                list = new ArrayList<>();
+            }
+            if (elementType.contains(et)) {
+                list.add(node);
+                ret.put(et, list);
+            }
+
+            Map<IElementType, List<ASTNode>> astNodes = findChildren(el, elementType);
+            astNodes.forEach((elementType1, astNodes1) -> {
+                List<ASTNode> list1 = ret.get(elementType1);
+                if (list1 == null) {
+                    list1 = new ArrayList<>();
+                }
+                list1.addAll(astNodes1);
+                ret.put(elementType1, list1);
+            });
+        }
+        return ret;
     }
 
     public static List<ASTNode> findChildren(PsiElement element, IElementType elementType) {
@@ -90,7 +130,7 @@ public class ApiFile extends PsiFileBase {
             if (element == null) {
                 return null;
             }
-            if (element instanceof  ApiFile){
+            if (element instanceof ApiFile) {
                 return new ApiRootNode(element.getFirstChild().getNode());
             }
             ASTNode node = element.getNode();
