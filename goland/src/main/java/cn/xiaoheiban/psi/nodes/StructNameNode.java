@@ -2,8 +2,6 @@ package cn.xiaoheiban.psi.nodes;
 
 import cn.xiaoheiban.antlr4.ApiParser;
 import cn.xiaoheiban.parser.ApiParserDefinition;
-import cn.xiaoheiban.parser.DuplicateManager;
-import cn.xiaoheiban.parser.StructManager;
 import cn.xiaoheiban.psi.ApiFile;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
@@ -30,7 +28,6 @@ public class StructNameNode extends IPsiNode {
         if (node.getElementType().equals(ApiParserDefinition.rule(ApiParser.RULE_typeAlias)) || node.getElementType().equals(ApiParserDefinition.rule(ApiParser.RULE_typeGroupAlias))) {
             this.setIsTypeList(true);
         }
-        StructManager.getInstance().add(this);
     }
 
 
