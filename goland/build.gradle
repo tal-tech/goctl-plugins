@@ -45,6 +45,7 @@ patchPluginXml {
     <ul>
         <li>update vendor</li>
         <li>update campany introduce</li>
+        <li>optimize rpc generation</li>
     </ul>
     """
 }
