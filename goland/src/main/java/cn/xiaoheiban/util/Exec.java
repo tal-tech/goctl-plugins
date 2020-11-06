@@ -149,7 +149,7 @@ public class Exec {
                 Notification.getInstance().log(project, result.getStdout());
             } else if (stdout.startsWith(Constant.PREFIX_WARNING)) {
                 Notification.getInstance().warning(project, result.getStdout());
-            } else if (stdout.startsWith(Constant.PREFIX_ERROR) || stdout.startsWith(Constant.PREFIX_ERROR2)) {
+            } else if (stdout.startsWith(Constant.PREFIX_ERROR) || stdout.contains(Constant.PREFIX_ERROR2)) {
                 Notification.getInstance().error(project, result.getStdout());
                 return false;
             } else {
