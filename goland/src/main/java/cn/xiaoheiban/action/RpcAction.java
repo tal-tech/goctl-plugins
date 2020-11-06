@@ -1,6 +1,7 @@
 package cn.xiaoheiban.action;
 
 import cn.xiaoheiban.contsant.Constant;
+import cn.xiaoheiban.io.IO;
 import cn.xiaoheiban.notification.Notification;
 import cn.xiaoheiban.ui.FileChooseDialog;
 import cn.xiaoheiban.util.Exec;
@@ -16,6 +17,8 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
 
 public class RpcAction extends AnAction {
 
@@ -47,21 +50,31 @@ public class RpcAction extends AnAction {
         if (project == null) {
             return;
         }
-        String parent = file.getParent().getPath();
-        FileChooseDialog dialog = new FileChooseDialog("请选择proto_path,如无请选择[跳过]");
-        dialog.setDefaultPath(parent);
-        dialog.setOnClickListener(new FileChooseDialog.OnClickListener() {
-            @Override
-            public void onOk(String p) {
-                generateRpc(project, p, path, parent, e);
-            }
+        try {
+            String parent = file.getParent().getPath();
+            String content = IO.read(file.getInputStream());
+            if (content.contains("import")) {
 
-            @Override
-            public void onJump() {
-                generateRpc(project, "", path, parent, e);
+                FileChooseDialog dialog = new FileChooseDialog("请选择proto_path");
+                dialog.setDefaultPath(parent);
+                dialog.setOnClickListener(new FileChooseDialog.OnClickListener() {
+                    @Override
+                    public void onOk(String p) {
+                        generateRpc(project, p, path, parent, e);
+                    }
+
+                    @Override
+                    public void onJump() {
+                        generateRpc(project, "", path, parent, e);
+                    }
+                });
+                dialog.showAndGet();
+                return;
             }
-        });
-        dialog.showAndGet();
+            generateRpc(project, "", path, parent, e);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
 
     private void generateRpc(Project project, String protoPath, String src, String target, AnActionEvent e) {
