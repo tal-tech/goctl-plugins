@@ -1,12 +1,12 @@
 <idea-plugin url="https://www.xiaoheiban.cn">
     <id>cn.xiaoheiban.go-zero</id>
     <name>Goctl</name>
-    <vendor email="anqiansong@xiaoheiban.cn" url="https://www.xiaoheiban.cn">xiaoheiban</vendor>
+    <vendor email="anqiansong@xiaoheiban.cn" url="http://www.100tal.com/">TAL</vendor>
     <description><![CDATA[
-     <a href="https://www.xiaoheiban.cn">xiaoheiban</a> support for JetBrains products.
+     <a href="http://www.100tal.com/">TAL</a> support for JetBrains products.
      <br>
      <br>
-     Support for Api programming language of xiaoheiban.
+     Support for Api programming language of tal.
      <br>
      <br>
      <a href="https://github.com/tal-tech/go-zero">go-zero</a> is a web and rpc framework for golang that with
