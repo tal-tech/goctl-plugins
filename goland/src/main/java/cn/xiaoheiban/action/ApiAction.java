@@ -2,6 +2,7 @@ package cn.xiaoheiban.action;
 
 import cn.xiaoheiban.contsant.Constant;
 import cn.xiaoheiban.notification.Notification;
+import cn.xiaoheiban.ui.FileChooseDialog;
 import cn.xiaoheiban.util.Exec;
 import cn.xiaoheiban.util.FileReload;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -15,7 +16,7 @@ import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NotNull;
 
-public class ApiAction extends AnAction{
+public class ApiAction extends AnAction {
     @Override
     public void update(@NotNull AnActionEvent e) {
         VirtualFile file = e.getData(PlatformDataKeys.VIRTUAL_FILE);
@@ -42,18 +43,29 @@ public class ApiAction extends AnAction{
         if (project == null) {
             return;
         }
-        ProgressManager.getInstance().run(new Task.Backgroundable(project, "generating api ...") {
+        String parent = file.getParent().getPath();
+        FileChooseDialog dialog = new FileChooseDialog("请选择proto_path", "取消");
+        dialog.setDefaultPath(parent);
+        dialog.setOnClickListener(new FileChooseDialog.OnClickListener() {
             @Override
-            public void run(@NotNull ProgressIndicator indicator) {
-                String path = file.getPath();
-                VirtualFile target = file.getParent();
-                boolean done = Exec.runGoctl(project, "api go -api " + path + " -dir " + target.getPath() + " -force");
-                if (done) {
-                    FileReload.reloadFromDisk(e);
-                    Notification.getInstance().notify(project, "generate api done");
-                }
+            public void onOk(String p) {
+                ProgressManager.getInstance().run(new Task.Backgroundable(project, "generating api ...") {
+                    @Override
+                    public void run(@NotNull ProgressIndicator indicator) {
+                        boolean done = Exec.runGoctl(project, "api go -api " + file.getPath() + " -dir " + p + " -force");
+                        if (done) {
+                            FileReload.reloadFromDisk(e);
+                            Notification.getInstance().notify(project, "generate api done");
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onJump() {
+
             }
         });
-
+        dialog.showAndGet();
     }
 }
