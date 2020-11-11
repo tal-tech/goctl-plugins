@@ -31,19 +31,20 @@ public class FileChooseDialog extends DialogWrapper {
     private TextFieldWithBrowseButton textFieldWithBrowseButton;
 
 
-    public FileChooseDialog(String title) {
+    public FileChooseDialog(String title,String cancelText) {
         super(true);
         this.title = title;
         init();
         setTitle(title);
         setOKButtonText("确认");
-        setCancelButtonText("跳过");
+        setCancelButtonText(cancelText);
         this.getButton(myCancelAction).addActionListener(e -> {
            if (onOkClickListener!=null){
                onOkClickListener.onJump();
            }
         });
     }
+
 
     public void setDefaultPath(String path) {
         textFieldWithBrowseButton.setText(path);

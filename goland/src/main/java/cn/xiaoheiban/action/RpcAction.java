@@ -54,8 +54,7 @@ public class RpcAction extends AnAction {
             String parent = file.getParent().getPath();
             String content = IO.read(file.getInputStream());
             if (content.contains("import")) {
-
-                FileChooseDialog dialog = new FileChooseDialog("请选择proto_path");
+                FileChooseDialog dialog = new FileChooseDialog("请选择proto_path","跳过");
                 dialog.setDefaultPath(parent);
                 dialog.setOnClickListener(new FileChooseDialog.OnClickListener() {
                     @Override
