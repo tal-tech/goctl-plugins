@@ -44,7 +44,7 @@ public class ApiAction extends AnAction {
             return;
         }
         String parent = file.getParent().getPath();
-        FileChooseDialog dialog = new FileChooseDialog("请选择proto_path", "取消");
+        FileChooseDialog dialog = new FileChooseDialog("请选择生成目录", "取消");
         dialog.setDefaultPath(parent);
         dialog.setOnClickListener(new FileChooseDialog.OnClickListener() {
             @Override
@@ -52,7 +52,7 @@ public class ApiAction extends AnAction {
                 ProgressManager.getInstance().run(new Task.Backgroundable(project, "generating api ...") {
                     @Override
                     public void run(@NotNull ProgressIndicator indicator) {
-                        boolean done = Exec.runGoctl(project, "api go -api " + file.getPath() + " -dir " + p + " -force");
+                        boolean done = Exec.runGoctl(project, "api go -api " + file.getPath() + " -dir " + p);
                         if (done) {
                             FileReload.reloadFromDisk(e);
                             Notification.getInstance().notify(project, "generate api done");
