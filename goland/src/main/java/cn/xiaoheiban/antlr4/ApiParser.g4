@@ -4,7 +4,11 @@ options {
     tokenVocab = ApiLexer;
 }
 
-api: importStatement? infoStatement? typeStatement? serviceStatement? EOF;
+api: importStatement? infoStatement? apiBody ;
+
+apiBody:
+    (typeStatement
+    |serviceStatement)*;
 
 importStatement:importSpec+;
 
@@ -13,7 +17,7 @@ importSpec: IMPORT importValue;
 infoStatement: INFO LPAREN pair RPAREN;
 
 // types
-typeStatement: (typeSingleSpec|typeGroupSpec)*;
+typeStatement: (typeSingleSpec|typeGroupSpec);
 
 // eg: type (...)
 typeGroupSpec:TYPE LPAREN typeGroupBody RPAREN;
@@ -41,7 +45,7 @@ referenceId:IDENT;
 tag: RAW_STRING;
 
 // service
-serviceStatement: (serviceServerSpec? serviceSpec)+;
+serviceStatement: (serviceServerSpec? serviceSpec);
 serviceServerSpec: ATSERVER LPAREN identPair* RPAREN;
 
 
