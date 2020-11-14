@@ -5,7 +5,6 @@ import cn.xiaoheiban.antlr4.ApiParser;
 import cn.xiaoheiban.language.ApiLanguage;
 import cn.xiaoheiban.psi.ApiFile;
 import cn.xiaoheiban.psi.nodes.*;
-import cn.xiaoheiban.template.ApiLiveTemplateContextType;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.ParserDefinition;
 import com.intellij.lang.PsiParser;
@@ -61,6 +60,7 @@ public class ApiParserDefinition implements ParserDefinition {
 
     ApiParserDefinition() {
         register(ApiParser.RULE_api, ApiRootNode::new);
+        register(ApiParser.RULE_apiBody, ApiBodyNode::new);
         register(ApiParser.RULE_importValue, ImportValueNode::new);
         register(ApiParser.RULE_structNameId, StructNameNode::new);
         register(ApiParser.RULE_structType, StructNode::new);

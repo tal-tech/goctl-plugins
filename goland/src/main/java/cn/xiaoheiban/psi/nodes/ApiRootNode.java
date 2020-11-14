@@ -7,7 +7,6 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNamedElement;
 import com.intellij.psi.tree.IElementType;
-import groovyjarjarantlr.collections.AST;
 import org.antlr.jetbrains.adapter.SymtabUtils;
 import org.antlr.jetbrains.adapter.psi.ScopeNode;
 import org.apache.commons.collections.map.HashedMap;
@@ -15,7 +14,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
-import java.util.function.BiConsumer;
 
 public class ApiRootNode extends IPsiNode implements ScopeNode {
 
@@ -110,20 +108,20 @@ public class ApiRootNode extends IPsiNode implements ScopeNode {
 
     @Override
     public @Nullable PsiElement resolve(PsiNamedElement element) {
-        PsiElement psiElement = SymtabUtils.resolve(this, ApiParserDefinition.ELEMENT_FACTORY, element, "/api/typeStatement/typeSingleSpec/typeAlias/structNameId/IDENT");
+        PsiElement psiElement = SymtabUtils.resolve(this, ApiParserDefinition.ELEMENT_FACTORY, element, "/api/apiBody/typeStatement/typeSingleSpec/typeAlias/structNameId/IDENT");
         if (psiElement != null) {
             return psiElement;
         }
-        psiElement = SymtabUtils.resolve(this, ApiParserDefinition.ELEMENT_FACTORY, element, "/api/typeStatement/typeSingleSpec/typeStruct/structType/structNameId/IDENT");
+        psiElement = SymtabUtils.resolve(this, ApiParserDefinition.ELEMENT_FACTORY, element, "/api/apiBody/typeStatement/typeSingleSpec/typeStruct/structType/structNameId/IDENT");
         if (psiElement != null) {
             return psiElement;
         }
-        psiElement = SymtabUtils.resolve(this, ApiParserDefinition.ELEMENT_FACTORY, element, "/api/typeStatement/typeGroupSpec/typeGroupBody/typeGroupAlias/structNameId/IDENT");
+        psiElement = SymtabUtils.resolve(this, ApiParserDefinition.ELEMENT_FACTORY, element, "/api/apiBody/typeStatement/typeGroupSpec/typeGroupBody/typeGroupAlias/structNameId/IDENT");
         if (psiElement != null) {
             return psiElement;
         }
 
-        psiElement = SymtabUtils.resolve(this, ApiParserDefinition.ELEMENT_FACTORY, element, "/api/typeStatement/typeGroupSpec/typeGroupBody/structType/structNameId/IDENT");
+        psiElement = SymtabUtils.resolve(this, ApiParserDefinition.ELEMENT_FACTORY, element, "/api/apiBody/typeStatement/typeGroupSpec/typeGroupBody/structType/structNameId/IDENT");
         return psiElement;
     }
 }
