@@ -499,13 +499,16 @@
 					"include": "#doc"
 				},
 				{
+					"include": "#server"
+				},
+				{
 					"include": "#handler"
 				}
 			]
 		},
 		"method": {
 			"name": "method.service.goctl",
-			"begin": "(GET|HEAD|POST|PUT|DELETE|CONNECT|OPTIONS|TRACE|PATCH|get|head|post|put|delete|connect|options|trace|patch)\\s*(/[A-Za-z][A-Za-z0-9_/:-]*)",
+			"begin": "(GET|HEAD|POST|PUT|DELETE|CONNECT|OPTIONS|TRACE|PATCH|get|head|post|put|delete|connect|options|trace|patch)\\s*((/[A-Za-z][A-Za-z0-9_/:-]*)|\\s|\\n)",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.other.goctl"
@@ -514,7 +517,7 @@
 					"name": "entity.name.function"
 				}
 			},
-			"end": "\\)",
+			"end": "(\\)|\\n|\\s)",
 			"patterns": [
 				{
 					"include": "#comments"
@@ -541,7 +544,7 @@
 					"name": "entity.name.function"
 				}
 			},
-			"end": "\\)",
+			"end": "(\\)|\\n)",
 			"patterns": [
 				{
 					"include": "#comments"
@@ -559,14 +562,24 @@
 			"begin": "@doc",
 			"end": "\\)"
 		},
-		"handler": {
-			"name": "method.handle.service.goctl",
-			"begin": "@server",
+		"server": {
+			"name": "method.server.service.goctl",
+			"begin": "@server\\(",
 			"end": "\\)",
 			"patterns": [
 				{
 					"include": "#handlerKeywords"
 				},
+				{
+					"include": "#ident"
+				}
+			]
+		},
+		"handler": {
+			"name": "method.handle.service.goctl",
+			"begin": "@handler",
+			"end": "\\n",
+			"patterns": [
 				{
 					"include": "#ident"
 				}
