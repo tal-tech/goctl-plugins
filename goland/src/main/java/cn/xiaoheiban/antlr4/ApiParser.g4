@@ -4,11 +4,11 @@ options {
     tokenVocab = ApiLexer;
 }
 
-api: importStatement? infoStatement? apiBody ;
+api: importStatement? infoStatement? apiBody;
 
 apiBody:
     (typeStatement
-    |serviceStatement)*;
+    |serviceStatement)* EOF;
 
 importStatement:importSpec+;
 
@@ -37,7 +37,7 @@ normalFieldType: GOTYPE|referenceId|(INTERFACE LBRACE RBRACE);
 starFieldType: STAR normalFieldType;
 mapFieldType: MAP LBRACK GOTYPE RBRACK objType;
 arrayOrSliceType: (LBRACK RBRACK)+ objType;
-structType: structNameId STRUCT LBRACE (typeFiled)* RBRACE;
+structType: structNameId STRUCT? LBRACE (typeFiled)* RBRACE;
 objType: normalFieldType|starFieldType;
 structNameId:IDENT;
 fieldName:IDENT;

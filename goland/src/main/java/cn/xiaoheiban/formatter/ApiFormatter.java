@@ -232,16 +232,16 @@ public class ApiFormatter implements FormattingModelBuilder {
                 boolean oneLineType = !parent.textContains('\n');
                 if (parent.getNode() != null && parent.getNode().getElementType().equals(STRUCT_TYPE)) {
                     if ((n1.getElementType().equals(STRUCT) || n1.getElementType().equals(INTERFACE)) && n2.getElementType().equals(LBRACE)) {
-                        return none();
+                        return lineBreak(true);
                     }
                     if (n1.getElementType() == LBRACE && n2.getElementType() == RBRACE) {
-                        return none();
+                        return lineBreak(false);
                     }
                     if (n1.getElementType() == LBRACE) {
-                        return oneLineType ? none() : lineBreak(false);
+                        return oneLineType ? lineBreak(true) : lineBreak(false);
                     }
                     if (n2.getElementType() == RBRACE) {
-                        return oneLineType ? none() : lineBreak(false);
+                        return oneLineType ? lineBreak(true) : lineBreak(false);
                     }
                 }
 
