@@ -114,15 +114,12 @@ abstract public class ApiLiveTemplateContextType extends TemplateContextType {
             if (node == null) {
                 return false;
             }
-            if (element instanceof cn.xiaoheiban.psi.ApiFile){
-                return true;
-            }
             ASTNode treeParent = node.getTreeParent();
             if (treeParent == null) {
                 return false;
             }
 
-            return treeParent.getElementType().equals(ApiParserDefinition.rule(ApiParser.RULE_api));
+            return treeParent.getElementType().equals(ApiParserDefinition.rule(ApiParser.RULE_apiBody));
         }
     }
 

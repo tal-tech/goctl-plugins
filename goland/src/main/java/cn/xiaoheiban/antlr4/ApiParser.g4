@@ -4,11 +4,11 @@ options {
     tokenVocab = ApiLexer;
 }
 
-api: importStatement? infoStatement? apiBody EOF;
+api: importStatement? infoStatement? apiBody;
 
 apiBody:
     (typeStatement
-    |serviceStatement)*;
+    |serviceStatement)* EOF;
 
 importStatement:importSpec+;
 

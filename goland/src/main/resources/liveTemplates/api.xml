@@ -8,13 +8,6 @@
         </context>
     </template>
 
-    <template description='struct declaration' name='struct' toReformat='true' toShortenFQNames='true'
-              value='struct{&#10;	$END$&#10;}'>
-        <context>
-            <option name='API_STRUCT' value='true'/>
-        </context>
-    </template>
-
     <template description='info block declaration' name='info' toReformat='true' toShortenFQNames='true'
               value='info(&#10;  title: "type title here"&#10;    desc: "type desc here"&#10;  author: "type author here"&#10;  email: "type email here"&#10;    version: "type version here"&#10;)'>
         <context>
