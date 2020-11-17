@@ -230,19 +230,25 @@ public class ApiFormatter implements FormattingModelBuilder {
                 PsiElement parent = psi1.getParent();
                 IElementType parentElementType = parent.getNode().getElementType();
                 boolean oneLineType = !parent.textContains('\n');
-                if (parent.getNode() != null && parent.getNode().getElementType().equals(STRUCT_TYPE)) {
-                    if ((n1.getElementType().equals(STRUCT) || n1.getElementType().equals(INTERFACE)) && n2.getElementType().equals(LBRACE)) {
-                        return lineBreak(true);
+//                if (parent.getNode() != null && parent.getNode().getElementType().equals(STRUCT_TYPE)) {
+//                    if ((n1.getElementType().equals(STRUCT) || n1.getElementType().equals(INTERFACE)) && n2.getElementType().equals(LBRACE)) {
+//                        return none();
+//                    }
+//                    if (n1.getElementType() == LBRACE && n2.getElementType() == RBRACE) {
+//                        return none();
+//                    }
+//                    if (n1.getElementType() == LBRACE) {
+//                        return oneLineType ? none() : lineBreak(false);
+//                    }
+//                    if (n2.getElementType() == RBRACE) {
+//                        return oneLineType ? none() : lineBreak(false);
+//                    }
+//                }
+                if (n1.getElementType().equals(LBRACE) && n2.getElementType().equals(RBRACE)) {
+                    if (parent.getText().contains("interface")) {
+                        return none();
                     }
-                    if (n1.getElementType() == LBRACE && n2.getElementType() == RBRACE) {
-                        return lineBreak(false);
-                    }
-                    if (n1.getElementType() == LBRACE) {
-                        return oneLineType ? lineBreak(true) : lineBreak(false);
-                    }
-                    if (n2.getElementType() == RBRACE) {
-                        return oneLineType ? lineBreak(true) : lineBreak(false);
-                    }
+                    return lineBreak();
                 }
 
                 if (parentElementType.equals(INFO_STATEMENT)) {
