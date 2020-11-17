@@ -21,7 +21,7 @@ function REX_URL_RETURN(target: string): string {
 }
 
 function REX_URL_METHOD(target: string): string {
-	return `\\(\\s*\\b${target}\\b\\s*\\)\\s*returns`;
+	return `\\(\\s*\\b${target}\\b\\s*\\)`;
 }
 
 export class GoctlDefinitionProvider implements vscode.DefinitionProvider {
