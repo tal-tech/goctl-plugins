@@ -7,11 +7,11 @@ info(
 )
 
 
-type request struct{
+type request {
     // TODO: add members here and delete this comment
 }
 
-type response struct{
+type response {
     // TODO: add members here and delete this comment
 }
 
