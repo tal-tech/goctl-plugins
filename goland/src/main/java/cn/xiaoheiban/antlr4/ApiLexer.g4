@@ -12,31 +12,7 @@ ATHANDLER:  '@handler';
 SERVICE:    'service';
 RETURNS:    'returns';
 IMPORT:     'import';
-// KEY
-KEY:
-    TITLE
-    |DESC
-    |AUTHOR
-    |EMAIL
-    |VERSION
-    |GROUP
-    |JWT
-    |SUMMARY
-    |HANDLER
-    |MIDDLEWARE
-    ;
 
-
-TITLE  :    'title';
-DESC   :    'desc';
-AUTHOR :    'author';
-EMAIL  :    'email';
-VERSION:    'version';
-GROUP :    'group';
-JWT    :    'jwt';
-SUMMARY:    'summary';
-HANDLER:    'handler';
-MIDDLEWARE:    'middleware';
 
 // HTTP METHOD
 HTTPMETHOD:GET|HEAD|POST|PUT|PATCH|DELETE|CONNECT|OPTIONS|TRACE;

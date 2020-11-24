@@ -4,11 +4,17 @@ options {
     tokenVocab = ApiLexer;
 }
 
-api: importStatement? infoStatement? apiBody;
+api:
+    (
+    importStatement
+    |infoStatement
+    |apiBody
+    )*
+    EOF;
 
 apiBody:
-    (typeStatement
-    |serviceStatement)* EOF;
+    typeStatement
+    |serviceStatement;
 
 importStatement:importSpec+;
 
@@ -46,7 +52,7 @@ tag: RAW_STRING;
 
 // service
 serviceStatement: (serviceServerSpec? serviceSpec);
-serviceServerSpec: ATSERVER LPAREN identPair* RPAREN;
+serviceServerSpec: ATSERVER LPAREN identPair RPAREN;
 
 
 serviceSpec: SERVICE serviceName LBRACE serviceBody+ RBRACE;
@@ -55,11 +61,12 @@ serviceBody:serviceDoc? (serviceHandler|serviceHandlerNew) serviceRoute;
 serviceDoc: ATDOC LPAREN pair RPAREN;
 serviceHandler: ATSERVER LPAREN handlerPair RPAREN;
 serviceHandlerNew: ATHANDLER handlerValue;
-serviceRoute:httpRoute LPAREN referenceId? RPAREN (RETURNS LPAREN referenceId? RPAREN)? SMICOLON?;
+serviceRoute:httpRoute (LPAREN referenceId? RPAREN)? (RETURNS LPAREN referenceId? RPAREN)? SMICOLON?;
 httpRoute:HTTPMETHOD PATH;
-identPair:KEY COLON identValue;
-handlerPair:KEY COLON handlerValue;
+identPair:(key COLON identValue)*;
+handlerPair:(key COLON handlerValue)+;
 identValue:(IDENT ','?)+;
 handlerValue:IDENT;
 importValue:VALUE;
-pair:(KEY COLON VALUE?)*;
+pair:(key COLON VALUE?)*;
+key:IDENT;

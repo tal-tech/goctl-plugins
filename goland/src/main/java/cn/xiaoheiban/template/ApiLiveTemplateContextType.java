@@ -119,7 +119,7 @@ abstract public class ApiLiveTemplateContextType extends TemplateContextType {
                 return false;
             }
 
-            return treeParent.getElementType().equals(ApiParserDefinition.rule(ApiParser.RULE_apiBody));
+            return treeParent.getElementType().equals(ApiParserDefinition.rule(ApiParser.RULE_apiBody)) || treeParent.getElementType().equals(ApiParserDefinition.rule(ApiParser.RULE_api));
         }
     }
 

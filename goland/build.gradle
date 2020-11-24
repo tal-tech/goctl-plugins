@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'cn.xiaoheiban'
-version '0.7.10'
+version '0.7.11'
 
 repositories {
     mavenCentral()
@@ -41,10 +41,10 @@ intellij {
 patchPluginXml {
     sinceBuild '193.0'
     changeNotes """
-    <h1># 2020-11-17(v0.7.10-latest)</h1>
+    <h1># 2020-11-24(v0.7.11-latest)</h1>
     <ul>
-        <li>make struct optional</li>
-        <li>format code</li>
+        <li>Remove fixed grammatical order</li>
+        <li>Modify the key of kv key value grammar to id type</li>
     </ul>
     """
 }

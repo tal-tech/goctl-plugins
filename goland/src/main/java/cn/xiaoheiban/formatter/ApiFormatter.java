@@ -63,7 +63,7 @@ public class ApiFormatter implements FormattingModelBuilder {
     private static final IElementType INTERFACE = ApiParserDefinition.token(ApiLexer.INTERFACE);
     private static final IElementType RBRACE = ApiParserDefinition.token(ApiLexer.RBRACE);
     private static final IElementType STRUCT_TYPE = ApiParserDefinition.rule(ApiParser.RULE_structType);
-    private static final IElementType KEY = ApiParserDefinition.token(ApiLexer.KEY);
+    private static final IElementType KEY = ApiParserDefinition.rule(ApiParser.RULE_key);
     private static final IElementType FIELD = ApiParserDefinition.rule(ApiParser.RULE_typeFiled);
     private static final IElementType GROUP_BODY = ApiParserDefinition.rule(ApiParser.RULE_typeGroupBody);
     private static final IElementType SERVICE_BODY = ApiParserDefinition.rule(ApiParser.RULE_serviceBody);

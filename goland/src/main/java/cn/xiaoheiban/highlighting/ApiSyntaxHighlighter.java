@@ -69,7 +69,6 @@ public class ApiSyntaxHighlighter extends SyntaxHighlighterBase {
                 case ApiLexer.IMPORT:
                     attrs = ATTR_KEYWORD;
                     break;
-                case ApiLexer.KEY:
                 case ApiLexer.GOTYPE:
                     attrs = ATTR_IDENTIFIER;
                     break;
