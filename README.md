@@ -2,6 +2,13 @@
 
 [English](README-en.md) | 简体中文
 
+## **已废弃, 请使用**
+
+[https://github.com/zeromicro/goctl-vscode](https://github.com/zeromicro/goctl-vscode)
+
+[https://github.com/zeromicro/goctl-intellij](https://github.com/zeromicro/goctl-intellij)
+
+
 goctl 插件/扩展集，例如 vscode、goland 等。
 
 **注意:** goctl goland 插件，goctl vscode 扩展均依赖 goctl 命令行工具，使用前请先[安装 goctl 命令行工具](https://github.com/tal-tech/go-zero#5-quick-start)。
